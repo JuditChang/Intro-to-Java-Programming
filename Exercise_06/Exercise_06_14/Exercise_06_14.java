@@ -9,24 +9,29 @@ the following table:
 public class Exercise_06_14 {
 	/** Main Method */
 	public static void main(String[] args) {
-		// Display table
-		double start = 1;			// Start series
-		double end   = 901;		// End series
-		System.out.println("\ni           m(i)     ");
-		System.out.println("---------------------");
-		for (double i = start; i <= end; i += 100) {
-			System.out.printf("%-12.0f", i);
-			System.out.printf("%-6.4f\n", estimatePI(i));
-		}
-	}
+		// Display the header
+        System.out.printf("%1s%10s\n", "i", "m(i)");
+        System.out.println("-------------");
+        
+        // Display the table
+        
+        double start = 1.0;
+        double end = 901;
+        
+        for(double n = start; n <= end; n += 100) {
+            
+            System.out.printf("%-7.0f%1.4f\n", n, computePi(n));
+        }    
+    }
 
 	/** Method estimatePI */
-	public static double estimatePI(double n) {
-		double pi = 0;		// Set pi to 0
-		for (double i = 1; i <= n; i ++) {
-			pi += Math.pow(-1, i +1) / (2 * i - 1);
+	public static double estimatePI(double num) {
+		double sum = 0;
+	
+        for (double i = 1; i <= num; i ++) {
+            sum += Math.pow(-1, i + 1) / (2 * i - 1);
 		}
-		pi *= 4;
-		return pi;
+	
+        return sum *= 4;
 	}
 }
